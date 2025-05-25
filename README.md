@@ -1,39 +1,50 @@
-# Eco River AI
 
-Eco River AI হলো একটি আধুনিক এআই ভিত্তিক নদী নিরাপত্তা ও পরিবেশ পর্যবেক্ষণ প্ল্যাটফর্ম।  
-এটি বিভিন্ন নদী সংক্রান্ত সমস্যাগুলোর (যেমন অবৈধ দখল, নদীর প্রস্থ কমে যাওয়া, নদীভাঙ্গন, দূষণ, বন্যা ঝুঁকি ইত্যাদি) সনাক্তকরণ, বিশ্লেষণ এবং প্রতিবেদন তৈরির জন্য উন্নত ফিচার সম্বলিত একটি ওয়েব অ্যাপ।
+<p align="center">
+  <img src="logo.png" alt="EcoRiver AI Logo" width="300"/>
+</p>
 
----
+# EcoRiver AI – Intelligent River Protection System 🌊🇧🇩
 
-## বৈশিষ্ট্যসমূহ (Features)
+**Slogan:** _"Saving Every Drop, Protecting Every River."_
 
-১. অবৈধ দখল শনাক্তকরণ  
-২. নদীর প্রস্থ কমে যাওয়া পর্যবেক্ষণ  
-৩. নদীভাঙ্গন পূর্বাভাস  
-৪. দূষণের উৎস শনাক্তকরণ  
-৫. ভাসমান প্লাস্টিক/বর্জ্য শনাক্তকরণ  
-৬. লাইভ এআই ম্যাপ  
-৭. জিপিএস লোকেশন এক্সট্রাকশন  
-৮. নদী এলাকা শ্রেণিবিভাগ  
-৯. ক্যাচমেন্ট এরিয়া বিশ্লেষণ  
-১০. পিডিএফ প্রতিবেদন তৈরি  
-... (মোট ৩৫টি ফিচার)  
+## 🌟 About the Project
 
----
+**EcoRiver AI** is a powerful AI-based web system developed for **WICE BD 2025** to automatically detect illegal river encroachments using satellite images and generate intelligent reports. It aims to support environmental protection, governmental monitoring, and public awareness.
 
-## প্রযুক্তি (Technologies)
+## 🚀 Features
 
-- Python  
-- Streamlit (ওয়েব অ্যাপ ফ্রেমওয়ার্ক)  
-- AI/ML মডেল (TensorFlow, PyTorch, বা অন্য)  
-- Geospatial Analysis (Geopandas, Shapely ইত্যাদি)  
-- অন্যান্য লাইব্রেরি: Pandas, NumPy, Matplotlib, OpenCV  
+✅ Upload satellite images  
+✅ Detect illegal encroachments using AI  
+✅ Highlight riverbanks and boundaries  
+✅ Extract geo-coordinates of encroachments  
+✅ Generate PDF reports  
+✅ Real-time dashboard  
+✅ Historical river data & analytics  
+✅ Feedback & suggestion module  
+✅ AI model retraining module  
+✅ Alerts, warnings & visualization tools
 
----
+## 🛠️ Tech Stack
 
-## ইনস্টলেশন ও রান (Installation & Run)
+- **Frontend**: Streamlit
+- **Backend**: Python, Flask
+- **AI/ML**: TensorFlow, PyTorch, Scikit-Learn
+- **Geo Tools**: GeoPandas, Folium, Shapely
+- **Data**: Pandas, NumPy
+- **Visualization**: Plotly, Matplotlib, Seaborn
+- **PDF Reports**: PyPDF2
+- **Deployment**: GitHub + Streamlit Cloud
 
-১. রিপোজিটরি ক্লোন করুন:  
+## 👥 Team Members
+
+- Mimtaj  
+- Tasfia Aminul Mimi  
+- Tanvir Ahmed Khan
+
+## 📂 Installation
+
 ```bash
-git clone https://github.com/yourusername/eco-river-ai.git
-cd eco-river-ai
+git clone https://github.com/jahanarya/eco_river_ai.git
+cd eco_river_ai
+pip install -r requirements.txt
+streamlit run app.py
