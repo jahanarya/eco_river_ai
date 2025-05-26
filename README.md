@@ -66,7 +66,8 @@
 ## 📸 Screenshots
 
 ### 🌍 Home Interface  
-![Homepage](screenshots/homepage.png)
+![Dashboard Screenshot](dashboard_screenshot.png)
+
 
 ### 📍 Encroachment Detection  
 ![Detection](screenshots/detection.png)
