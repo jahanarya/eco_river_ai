@@ -4,15 +4,20 @@
   <img src="logo.png" alt="EcoRiver AI Logo" width="300"/>
 </p>
 
-# EcoRiver AI – Intelligent River Protection System 🌊🇧🇩
+<h1 align="center">EcoRiver AI – Intelligent River Protection System 🌊🇧🇩</h1>
 
-**Slogan:** _"Saving Every Drop, Protecting Every River."_
+<p align="center">
+  <em>"Saving Every Drop, Protecting Every River."</em>
+</p>
 
-[![Made with Python](https://img.shields.io/badge/Made%20with-Python-blue.svg)](https://www.python.org/)
-[![Streamlit App](https://img.shields.io/badge/Deployed%20on-Streamlit-brightgreen.svg)](https://ecoriver-ai-ay5og92zfanrwxpcayfbti.streamlit.app/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-🔗 **[Live Demo →](https://ecoriver-ai-ay5og92zfanrwxpcayfbti.streamlit.app/)**
+<p align="center">
+  <a href="https://ecoriver-ai-ay5og92zfanrwxpcayfbti.streamlit.app/" target="_blank">
+    🌐 Live Demo
+  </a> |
+  <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python" alt="Python Badge"/>
+  <img src="https://img.shields.io/badge/Streamlit-App-red?logo=streamlit" alt="Streamlit Badge"/>
+  <img src="https://img.shields.io/badge/Status-Active-brightgreen"/>
+</p>
 
 ---
 
@@ -24,16 +29,16 @@
 
 ## 🚀 Features
 
-- ✅ Upload satellite images  
-- ✅ Detect illegal encroachments using AI  
-- ✅ Highlight riverbanks and boundaries  
-- ✅ Extract geo-coordinates of encroachments  
-- ✅ Generate PDF reports  
-- ✅ Real-time dashboard  
-- ✅ Historical river data & analytics  
-- ✅ Feedback & suggestion module  
-- ✅ AI model retraining module  
-- ✅ Alerts, warnings & visualization tools
+✅ Upload satellite images  
+✅ Detect illegal encroachments using AI  
+✅ Highlight riverbanks and boundaries  
+✅ Extract geo-coordinates of encroachments  
+✅ Generate PDF reports  
+✅ Real-time dashboard  
+✅ Historical river data & analytics  
+✅ Feedback & suggestion module  
+✅ AI model retraining module  
+✅ Alerts, warnings & visualization tools
 
 ---
 
@@ -58,13 +63,13 @@
 
 ---
 
-## 📷 Screenshots
+## 📸 Screenshots
 
-| Satellite Upload & Detection | Dashboard & Alerts |
-|-----------------------------|---------------------|
-| ![Upload](screenshots/upload_sample.png) | ![Dashboard](screenshots/dashboard_sample.png) |
+### 🌍 Home Interface  
+![Homepage](screenshots/homepage.png)
 
-> 🔔 *Place your screenshots in a `screenshots/` folder.*
+### 📍 Encroachment Detection  
+![Detection](screenshots/detection.png)
 
 ---
 
@@ -75,3 +80,4 @@ git clone https://github.com/jahanarya/eco_river_ai.git
 cd eco_river_ai
 pip install -r requirements.txt
 streamlit run app.py
+
