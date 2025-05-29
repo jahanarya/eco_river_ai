@@ -145,9 +145,13 @@ def run_feature(feature_id):
 
 if __name__ == "__main__":
     # Use debug=False and use_reloader=False to avoid signal/threading errors in all environments
+<<<<<<< HEAD
     app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
   
 
 
     
         
+=======
+    app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
+>>>>>>> 900cbc7 (Updated features and modified app.py and modules)

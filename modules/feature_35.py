@@ -1,50 +1,65 @@
 # Feature 35.py implementation here
 
-import streamlit as st
-import pandas as pd
-import json
+import numpy as np
+from typing import List, Dict, Any
 
-def app():
-    st.header("🌐 ওপেন ডেটা এপিআই এক্সপোর্ট")
+def feature_35_func(sensor_data: List[Dict[str, Any]], anomaly_threshold: float = 2.5) -> Dict[str, Any]:
+    """
+    Advanced Feature: Real-Time Anomaly Detection in River Sensor Data
 
-    st.markdown("""
-    নদী ও পরিবেশ সংক্রান্ত তথ্যগুলোকে ওপেন ডেটা ফরম্যাটে (CSV, JSON) এক্সপোর্ট করে প্রদান করবে,
-    যাতে অন্য অ্যাপ্লিকেশন বা প্ল্যাটফর্মে সহজে ব্যবহার করা যায়।
-    """)
+    This feature analyzes time-series sensor data (e.g., temperature, pH, turbidity)
+    from river monitoring stations and detects anomalies using Z-score statistical analysis.
 
-    # ডেমো ডেটাসেট (নদীর কিছু তথ্য)
-    data = {
-        "নদী": ["মেঘনা", "তিতাস", "পদ্মা", "যমুনা"],
-        "দৈর্ঘ্য (কিমি)": [120, 98, 240, 150],
-        "প্রবাহের হার (কিউবিক মিটার/সেকেন্ড)": [5000, 3200, 7000, 4500],
-        "দূষণ মাত্রা": ["মাঝারি", "নিম্ন", "উচ্চ", "মাঝারি"],
+    Args:
+        sensor_data: List of dicts, each with 'timestamp', 'sensor_id', and sensor readings (float)
+        anomaly_threshold: Z-score threshold for anomaly detection (default: 2.5)
+
+    Returns:
+        Dict with 'anomalies' (list of detected anomaly records),
+        'summary' (total analyzed, total anomalies), and
+        'recommendations' (string)
+    Example sensor_data element:
+        {
+            'timestamp': '2025-05-29T08:00:00Z',
+            'sensor_id': 'station_1',
+            'temperature': 28.4,
+            'ph': 7.3,
+            'turbidity': 22.1
+        }
+    """
+    if not sensor_data:
+        return {"anomalies": [], "summary": "No data provided.", "recommendations": "Check sensor network."}
+
+    # Extract sensor keys (excluding timestamp and sensor_id)
+    keys = [k for k in sensor_data[0] if k not in ['timestamp', 'sensor_id']]
+    anomalies = []
+
+    for key in keys:
+        values = np.array([row[key] for row in sensor_data if key in row and isinstance(row[key], (int, float))])
+        if len(values) < 2:
+            continue  # Not enough data for anomaly detection
+
+        mean = np.mean(values)
+        std = np.std(values)
+        if std == 0:
+            continue  # No variation, no anomalies possible
+
+        for idx, val in enumerate(values):
+            z_score = abs((val - mean) / std)
+            if z_score > anomaly_threshold:
+                anomalies.append({
+                    "timestamp": sensor_data[idx]['timestamp'],
+                    "sensor_id": sensor_data[idx]['sensor_id'],
+                    "metric": key,
+                    "value": val,
+                    "z_score": round(z_score, 2)
+                })
+
+    summary = f"Total records analyzed: {len(sensor_data)} | Total anomalies detected: {len(anomalies)}"
+    recommendations = "Investigate sensor calibration or possible environmental incidents." if anomalies else "All sensor readings within normal range."
+
+    return {
+        "anomalies": anomalies,
+        "summary": summary,
+        "recommendations": recommendations
     }
-
-    df = pd.DataFrame(data)
-
-    st.subheader("নদীর ডেটাসেট")
-
-    st.dataframe(df)
-
-    st.markdown("**এক্সপোর্ট ফরম্যাট নির্বাচন করুন:**")
-    export_format = st.selectbox("", ["CSV", "JSON"])
-
-    if st.button("ডাউনলোড প্রস্তুত করুন"):
-        if export_format == "CSV":
-            csv = df.to_csv(index=False).encode('utf-8')
-            st.download_button(
-                label="CSV ডাউনলোড করুন",
-                data=csv,
-                file_name="river_data.csv",
-                mime='text/csv',
-            )
-        else:
-            json_str = df.to_json(orient='records', force_ascii=False)
-            st.download_button(
-                label="JSON ডাউনলোড করুন",
-                data=json_str,
-                file_name="river_data.json",
-                mime='application/json',
-            )
-
-

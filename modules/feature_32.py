@@ -1,35 +1,24 @@
 # Feature 32.py implementation here
+import json
 
-import streamlit as st
-
-def app():
-    st.header("📴 অফলাইন মোড অ্যাপ")
-
-    st.markdown("""
-    এই ফিচারটি ব্যবহারকারীদের অফলাইনে কিছু গুরুত্বপূর্ণ তথ্য ও ডেটা অ্যাক্সেস করার সুযোগ দেয়।
-    যখন ইন্টারনেট সংযোগ না থাকে, তখনও কিছু ফাংশনালিটি চালানো যাবে।
-    """)
-
-    st.info("দ্রুত ডেমো: অফলাইনে কিছু ডেটা সংরক্ষণ এবং দেখানোর ব্যবস্থা")
-
-    # সিম্পল ডেটা ক্যাশিং ডেমো (Session state ব্যবহার)
-    if 'offline_data' not in st.session_state:
-        st.session_state['offline_data'] = []
-
-    new_data = st.text_input("নতুন তথ্য সংরক্ষণ করুন")
-
-    if st.button("তথ্য সংরক্ষণ করুন"):
-        if new_data:
-            st.session_state['offline_data'].append(new_data)
-            st.success("তথ্য সংরক্ষণ করা হয়েছে!")
-        else:
-            st.error("তথ্য ফাঁকা হতে পারে না!")
-
-    st.subheader("সংরক্ষিত তথ্যসমূহ (অফলাইন)")
-
-    if st.session_state['offline_data']:
-        for idx, item in enumerate(st.session_state['offline_data'], 1):
-            st.write(f"{idx}. {item}")
+def feature_32_func(data: dict = None, file_path: str = "offline_data.json", mode: str = "save") -> dict:
+    """
+    Save or load data locally for offline usage.
+    Args:
+        data: Data to be saved (used in 'save' mode)
+        file_path: Local file path
+        mode: 'save' to save data, 'load' to load data
+    Returns:
+        Loaded data dict if mode is 'load', else None
+    """
+    if mode == "save":
+        if data is None:
+            raise ValueError("No data provided to save.")
+        with open(file_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        return None
+    elif mode == "load":
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
     else:
-        st.write("কোন তথ্য সংরক্ষিত নেই।")
-
+        raise ValueError("Invalid mode. Use 'save' or 'load'.")

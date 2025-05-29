@@ -1,30 +1,21 @@
 # Feature 33.py implementation here
+from typing import List, Dict, Any
 
-import streamlit as st
-import datetime
-
-def app():
-    st.header("🕵️‍♂️ হুমকির গোয়েন্দা প্রতিবেদন")
-    st.markdown("""
-    এই মডিউলটি নদী ও পরিবেশ সংক্রান্ত হুমকির গোয়েন্দা প্রতিবেদন প্রস্তুত করে।
-    প্রতিবেদন স্বয়ংক্রিয়ভাবে বিভিন্ন উৎস থেকে ডেটা সংগ্রহ করে হুমকির বিশ্লেষণ দেয়।
-    """)
-
-    # ডেমো ডেটা
-    threats = [
-        {"date": "2025-05-01", "type": "অবৈধ দখল", "severity": "উচ্চ", "location": "নদী খাঁদা, সিলেট"},
-        {"date": "2025-05-10", "type": "দূষণ", "severity": "মাঝারি", "location": "মেঘনা নদী, চাঁদপুর"},
-        {"date": "2025-05-15", "type": "ভাসমান বর্জ্য", "severity": "নিম্ন", "location": "তিতাস নদী, কুমিল্লা"},
-    ]
-
-    st.subheader("সাম্প্রতিক হুমকির তালিকা")
-
-    for threat in threats:
-        st.write(f"📅 তারিখ: {threat['date']}")
-        st.write(f"⚠️ হুমকির ধরণ: {threat['type']}")
-        st.write(f"🔥 গুরুত্ব স্তর: {threat['severity']}")
-        st.write(f"📍 অবস্থান: {threat['location']}")
-        st.markdown("---")
-
-    st.info("ডেমো হিসেবে স্ট্যাটিক ডেটা প্রদর্শন করা হয়েছে। বাস্তব প্রয়োজনে API ও ডাটাবেজ সংযোগ করা যেতে পারে।")
+def feature_33_func(events: List[Dict[str, Any]]) -> Dict[str, Any]:
+    """
+    Generate a threat intelligence report from recent river-related events.
+    Args:
+        events: List of event dicts (e.g., detected illegal activity, pollution spikes)
+    Returns:
+        Dict with summary, risk assessment, and recommendations
+    """
+    num_events = len(events)
+    high_risk_events = [e for e in events if e.get('risk', 'low') == 'high']
+    report = {
+        "summary": f"Total events analyzed: {num_events}",
+        "high_risk_count": len(high_risk_events),
+        "recommendations": "Increase monitoring in high-risk zones." if high_risk_events else "Continue regular observation.",
+        "details": high_risk_events
+    }
+    return report
 

@@ -23,22 +23,22 @@
 
 ## 🌟 About the Project
 
-**EcoRiver AI** is a powerful AI-based web system developed for **WICE BD 2025** to automatically detect illegal river encroachments using satellite images and generate intelligent reports. It aims to support environmental protection, governmental monitoring, and public awareness.
+**EcoRiver AI** is a powerful, AI-driven web system developed for **WICE BD 2025** to automatically detect illegal river encroachments using satellite images and generate intelligent reports. It aims to support environmental protection, governmental monitoring, and public awareness for Bangladesh’s rivers.
 
 ---
 
 ## 🚀 Features
 
-✅ Upload satellite images  
-✅ Detect illegal encroachments using AI  
-✅ Highlight riverbanks and boundaries  
-✅ Extract geo-coordinates of encroachments  
-✅ Generate PDF reports  
-✅ Real-time dashboard  
-✅ Historical river data & analytics  
-✅ Feedback & suggestion module  
-✅ AI model retraining module  
-✅ Alerts, warnings & visualization tools
+- ✅ Upload satellite images
+- ✅ Detect illegal encroachments using AI
+- ✅ Highlight riverbanks and boundaries
+- ✅ Extract geo-coordinates of encroachments
+- ✅ Generate PDF reports
+- ✅ Real-time dashboard
+- ✅ Historical river data & analytics
+- ✅ Feedback & suggestion module
+- ✅ AI model retraining module
+- ✅ Alerts, warnings & visualization tools
 
 ---
 
@@ -50,15 +50,15 @@
 - **Geo Tools**: GeoPandas, Folium, Shapely  
 - **Data**: Pandas, NumPy  
 - **Visualization**: Plotly, Matplotlib, Seaborn  
-- **PDF Reports**: PyPDF2  
+- **PDF Reports**: PyPDF2, fpdf  
 - **Deployment**: GitHub + Streamlit Cloud
 
 ---
 
 ## 👥 Team Members
 
-- **Mimtaj**  
-- **Tasfia Aminul Mimi**  
+- **Mimtaj**
+- **Tasfia Aminul Mimi**
 - **Tanvir Ahmed Khan**
 
 ---
@@ -67,7 +67,6 @@
 
 ### 🌍 Home Interface  
 ![Dashboard Screenshot](dashboard_screenshot.png)
-
 
 ### 📍 Encroachment Detection  
 ![Detection](screenshots/detection.png)
@@ -81,4 +80,38 @@ git clone https://github.com/jahanarya/eco_river_ai.git
 cd eco_river_ai
 pip install -r requirements.txt
 streamlit run app.py
+```
 
+---
+
+## 📁 Directory Structure (Sample)
+
+```
+eco_river_ai/
+├── app.py
+├── requirements.txt
+├── README.md
+├── logo.png
+├── dashboard_screenshot.png
+├── screenshots/
+│   └── detection.png
+├── models/
+│   └── illegal_occupation_model.pkl
+├── feature1_detect_illegal_occupation.py
+├── feature2_monitor_river_width.py
+├── ... (other feature files)
+```
+
+---
+
+## 💬 Feedback & Contribution
+
+Pull requests and suggestions are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📜 License
+
+[MIT License](LICENSE)
+
+---

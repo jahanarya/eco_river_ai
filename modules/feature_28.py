@@ -1,23 +1,18 @@
 # Feature 28.py implementation here
 
-import streamlit as st
+from typing import List, Tuple
 
-def app():
-    st.header("🛤️ নিরাপদ রুট পরিকল্পনা")
-    st.markdown("""
-    নদী সংলগ্ন এলাকায় নিরাপদ পথ নির্ধারণের জন্য একটি সহজ রুট প্ল্যানার। 
-    পরিবহন ও বন্যার ঝুঁকি বিবেচনা করে নিরাপদ পথ প্রদর্শন করবে।
-    """)
-
-    start_location = st.text_input("শুরু করার স্থান লিখুন")
-    end_location = st.text_input("গন্তব্যের স্থান লিখুন")
-
-    if st.button("রুট নির্ধারণ করুন"):
-        if start_location and end_location:
-            # ডেমো: নিরাপদ রুট তৈরি (সাধারণ টেক্সট রিটার্ন)
-            safe_route = f"নিরাপদ রুট: {start_location} থেকে {end_location} পর্যন্ত নদী থেকে দূরে সড়ক ব্যবহার করুন।"
-            st.success(safe_route)
-            st.info("বন্যা ঝুঁকি ও অবৈধ দখল থেকে নিরাপদ পথ বেছে নেওয়া হয়েছে।")
-        else:
-            st.warning("অনুগ্রহ করে উভয় স্থান পূরণ করুন।")
-
+def feature_28_func(start: Tuple[float, float], end: Tuple[float, float], risk_zones: List[Tuple[float, float]]) -> List[Tuple[float, float]]:
+    """
+    Plan a safe route avoiding risk zones.
+    Args:
+        start: Start GPS coordinate (lat, lon)
+        end: End GPS coordinate (lat, lon)
+        risk_zones: List of risky GPS coordinates
+    Returns:
+        List of GPS coordinates for safe route
+    """
+    # Placeholder implementation: direct route
+    # You can add route optimization with libraries like NetworkX or Google Maps API
+    route = [start, end]
+    return route

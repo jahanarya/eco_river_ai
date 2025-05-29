@@ -1,31 +1,33 @@
-# Feature 22.py implementation here
-
-import streamlit as st
+from typing import List, Dict, Any
 from datetime import datetime, timedelta
 
-def app():
-    st.header("⏰ নির্ধারিত সময়ে ব্যবস্থা না নিলে অ্যালার্ট বৃদ্ধি")
-    st.markdown("""
-    এখানে আপনি নির্ধারিত সময়ের মধ্যে যদি ব্যবস্থা না নেন, তাহলে অ্যালার্ট স্বয়ংক্রিয়ভাবে বৃদ্ধি পাবে।
-    """)
-
-    st.write("অ্যালার্ট ইভেন্টের বিবরণ দিন:")
-
-    event_description = st.text_area("অ্যালার্ট ইভেন্ট বর্ণনা")
-
-    deadline = st.date_input("নির্ধারিত সময়সীমা নির্বাচন করুন")
-
-    current_time = datetime.now()
-
-    if st.button("অ্যালার্ট চেক করুন"):
-        if not event_description.strip():
-            st.error("অনুগ্রহ করে অ্যালার্ট ইভেন্টের বিবরণ দিন।")
-        else:
-            st.write(f"বর্তমান সময়: {current_time.strftime('%Y-%m-%d %H:%M:%S')}")
-            st.write(f"নির্ধারিত সময়সীমা: {deadline.strftime('%Y-%m-%d')}")
-            
-            if current_time.date() > deadline:
-                st.warning("⚠️ নির্ধারিত সময়সীমা অতিক্রান্ত! অ্যালার্টের তীব্রতা বৃদ্ধি করুন।")
-            else:
-                st.success("নির্ধারিত সময়সীমার মধ্যে অ্যালার্ট। ব্যবস্থা নেওয়ার সময় বাকি।")
-
+def feature_22_func(alerts: List[Dict[str, Any]], time_limit_hours: int = 24) -> List[Dict[str, Any]]:
+    """
+    Escalate alert level if not acted upon within a time limit.
+    Args:
+        alerts: List of alert dicts with 'created_at' and 'status'
+        time_limit_hours: Hours after which to escalate
+    Returns:
+        Updated list with 'escalated' field set where appropriate
+    """
+    now = datetime.utcnow()
+    for alert in alerts:
+        escalated = False
+        if alert.get('status') == 'pending':
+            created = alert.get('created_at')
+            created_dt = None
+            if created:
+                if isinstance(created, str):
+                    try:
+                        # Handle ISO string possibly ending with 'Z'
+                        if created.endswith('Z'):
+                            created = created.replace('Z', '+00:00')
+                        created_dt = datetime.fromisoformat(created)
+                    except Exception:
+                        created_dt = None
+                elif isinstance(created, datetime):
+                    created_dt = created
+            if created_dt and (now - created_dt) > timedelta(hours=time_limit_hours):
+                escalated = True
+        alert['escalated'] = escalated
+    return alerts

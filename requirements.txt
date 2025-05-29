@@ -21,3 +21,8 @@ gunicorn==20.1.0
 streamlit-folium
 fpdf
 pygame
+joblib
+simpleaudio
+Pillow
+python-dotenv
+openpyxl
